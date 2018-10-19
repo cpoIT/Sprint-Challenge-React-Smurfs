@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../../node_modules/axios';
 
+
+
 class SmurfForm extends Component {
   constructor(props) {
     super(props);
@@ -25,58 +27,9 @@ class SmurfForm extends Component {
         age: '',
         height: ''
       });
-      // this.setState({ smurfs: response.data, name: ''})
     })
     .catch(error => console.log(error))
-    // add code to create the smurf using the api
-
-
   }
-
-  // let smurfs = [
-  //   {
-  //     id: 0,
-  //     name: 'Brainey Smurf',
-  //     age: 200,
-  //     height: '8cm'
-  //   }
-  // ];
-  // server.get('/smurfs', (req, res) => {
-  //   res.json(smurfs);
-  // });
-  // let smurfId = 1;
-  
-  // server.post('/smurfs', (req, res) => {
-  //   const { name, age, height } = req.body;
-  //   const newSmurf = { name, age, height, id: smurfId };
-  //   if (!name || !age || !height) {
-  //     return sendUserError(
-  //       'Ya gone did smurfed! Name/Age/Height are all required to create a smurf in the smurf DB.',
-  //       res
-  //     );
-  //   }
-  //   const findSmurfByName = smurf => {
-  //     return smurf.name === name;
-  //   };
-  //   if (smurfs.find(findSmurfByName)) {
-  //     return sendUserError(
-  //       `Ya gone did smurfed! ${name} already exists in the smurf DB.`,
-  //       res
-  //     );
-  //   }
-  
-  //   smurfs.push(newSmurf);
-  //   smurfId++;
-  //   res.json(smurfs);
-  // });
-
-// ```js
-// {
-//   name: 'Sleepy',
-//   age: 323,
-//   height: '5cm'
-// }
-// ```
 
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });

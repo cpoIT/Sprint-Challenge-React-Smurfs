@@ -1,3 +1,18 @@
 .App {
   text-align: center;
 }
+
+nav {
+  padding: 20px;
+}
+nav a {
+  padding: 20px;
+}
+
+form {
+  padding: 20px;
+}
+
+input {
+  margin: 10px;
+}

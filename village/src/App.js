@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Route, NavLink} from 'react-router-dom';
 
 import './App.css';
+
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
+
+const targets = ['smurf-form', ''];
+
 
 class App extends Component {
   constructor(props) {
@@ -29,11 +34,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm />
-        <Smurfs smurfs={this.state.smurfs} />
+        <nav>
+          {targets.map(target => (
+            <NavLink key={target} to={`/${target}`}>Smurfy {target}
+            </NavLink>
+          ))}
+        <Route path = '/smurf-form' render={props => <SmurfForm {...props} />} />
+        <Route exact path = '/' render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+        </nav>
       </div>
     );
   }
 }
 
 export default App;
+        {/* <nav>
+          <NavLink to={'/smurf-form'}>
+        <Route path = '/smurf-form' render={props => <SmurfForm {...props} />} />
+        </NavLink>
+        <Route exact path = '/' render={props => <Smurfs {...props} smurfs={this.state.smurfs} />} />
+        </nav> */}

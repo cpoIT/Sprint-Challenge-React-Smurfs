@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../node_modules/axios';
+import PropTypes from 'prop-types';
 
 
 
@@ -15,20 +15,18 @@ class SmurfForm extends Component {
 
   addSmurf = event => {
     event.preventDefault();
-    const smurf = {name: this.state.name, age: this.state.age, height: this.state.height};
-    console.log(smurf)
-    axios
-    .post('http://localhost:3333/smurfs', smurf)
-    .then(response => {
-      console.log('POST RESPONSE:', response)
+    const newSmurf = {
+      name: this.state.name, 
+      age: this.state.age, 
+      height: this.state.height
+    };
+    console.log('newSmurf:', newSmurf)
+    this.props.addSmurf(newSmurf);
       this.setState({
-        smurfs: response.data,
         name: '',
         age: '',
         height: ''
       });
-    })
-    .catch(error => console.log(error))
   }
 
   handleInputChange = e => {
@@ -62,6 +60,10 @@ class SmurfForm extends Component {
       </div>
     );
   }
+}
+
+SmurfForm.propTypes = {
+  addSmurf: PropTypes.func,
 }
 
 export default SmurfForm;
